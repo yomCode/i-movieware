@@ -10,12 +10,13 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
-}
-
 body {
-  font-family: "Nunito", sans-serif;
+  /* font-family: "popins", sans-serif; */
+  font-family: poppins, sans-serif;
   background-color: #f7fafc;
   /* padding: 0 1rem; */
+}
+
+.navLink.active {
+  border-bottom: 2px solid #f5f5f5;
 }
