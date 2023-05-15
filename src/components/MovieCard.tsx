@@ -1,6 +1,7 @@
 import React from "react";
+import BackupImage from "../assets/backupImage.jpeg";
 
-interface MovieCardProps {
+export interface MovieCardProps {
   id: string;
   title: string;
   description: string;
@@ -13,7 +14,9 @@ export const MovieCard = ({
   description,
   image,
 }: MovieCardProps) => {
-  const imageUrl = `https://image.tmdb.org/t/p/w500/${image}`;
+  const imageUrl = image
+    ? `https://image.tmdb.org/t/p/w500/${image}`
+    : BackupImage;
   return (
     <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md  m-3">
       <div>
@@ -21,7 +24,7 @@ export const MovieCard = ({
       </div>
       <div className="p-5">
         <h1 className="text-3xl font-bold">{title}</h1>
-        <p className="font-normal text-gray-700">{description}</p>
+        <p className="font-normal text-gray-700 mt-4">{description}</p>
       </div>
     </div>
   );

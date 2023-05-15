@@ -1,7 +1,13 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import Logo from "../assets/moviewwareLogo.png";
-// import { HiSearch } from "react-icons/hi";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
+interface FormElement extends HTMLFormControlsCollection {
+  search: HTMLInputElement;
+}
+
+interface SubmitSearchQuery extends HTMLFormElement {
+  readonly element: FormElement;
+}
 
 const Header = () => {
   const navElements = [
@@ -23,36 +29,25 @@ const Header = () => {
     },
   ];
 
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const navigate = useNavigate();
+
+  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   e.preventDefault();
+  //   setSearchValue(e.target.search.value);
+  // };
+
+  const handleSearchMovie = (e: React.FormEvent<SubmitSearchQuery>) => {
+    e.preventDefault();
+    const query: string = (
+      e.currentTarget.elements.namedItem("search") as HTMLInputElement
+    ).value;
+    console.log({ query });
+    return navigate(`/search?q=${query}`);
+  };
+
   return (
-    // <div className="h-[62px] flex justify-between items-center border-b p-5 bg-[#f5f5f5] ">
-    //   <div>
-    //     <img className="w-[100px] h-[50px]" src={Logo} alt="i-movieware" />
-    //   </div>
-    //   <nav>
-    //     <span className="p-2 hover:cursor-pointer  hover:bg-[#4b4b4b] rounded-md">
-    //       Home
-    //     </span>
-    //     <span className="p-2 hover:cursor-pointer hover:bg-[#4b4b4b] rounded-md">
-    //       Popular
-    //     </span>
-    //     <span className="p-2 hover:cursor-pointer hover:bg-[#4b4b4b] rounded-md">
-    //       Top Rated
-    //     </span>
-    //     <span className="p-2 hover:cursor-pointer hover:bg-[#4b4b4b] rounded-md">
-    //       Upcoming
-    //     </span>
-    //   </nav>
-    //   <div className="relative">
-    //     <input
-    //       className="h-[30px] text-[#6c6c6c] py-4 pl-[30px]  border-solid border-2 border-[black] rounded-md focus:outline-none "
-    //       type="text"
-    //       placeholder="Search....."
-    //     />
-    //     <span className="absolute left-3 top-[25%]">
-    //       <HiSearch className="text-[#6c6c6c]" />
-    //     </span>
-    //   </div>
-    // </div>
     <header>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -100,12 +95,15 @@ const Header = () => {
                 </svg>
                 <span className="sr-only">Search icon</span>
               </div>
-              <input
-                type="text"
-                id="search-navbar"
-                className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search..."
-              />
+              <form onSubmit={handleSearchMovie}>
+                <input
+                  type="text"
+                  id="search"
+                  name="search"
+                  className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Search..."
+                />
+              </form>
             </div>
             <button
               data-collapse-toggle="navbar-search"
@@ -148,12 +146,15 @@ const Header = () => {
                   ></path>
                 </svg>
               </div>
-              <input
-                type="text"
-                id="search-navbar"
-                className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search..."
-              />
+              <form onSubmit={handleSearchMovie}>
+                <input
+                  type="text"
+                  name="search"
+                  id="search"
+                  className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Search..."
+                />
+              </form>
             </div>
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               {navElements?.map((element, index) => {

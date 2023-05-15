@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { MovieCard } from "../components/MovieCard";
@@ -9,8 +9,9 @@ import getMovies, {
 } from "../api/TMDBAPIs/fetchMovie";
 import { MoviesRequestResponse } from "../api/TMDBAPIs/fetchMovie";
 // import Pic from ;
+import { useFetch } from "../hooks/useFetch";
 
-interface MovieListProps {
+export interface MovieListProps {
   id: string;
   title: string;
   overview: string;
@@ -18,40 +19,20 @@ interface MovieListProps {
 }
 
 const MovieList = () => {
-  const [movies, setMiovies] = React.useState<MovieListProps[] | null>(null);
-  //   const [MoviesResponse, onSubmitRequest, MoviesPending, MoviesError] =
-  //     useAsync<GetMovies, MovieResponse, any>(getMovies);
-
-  //   const page = 1;
-  //   const type = "popular";
-
-  //   useEffect(() => {
-  //     onSubmitRequest({ page, type });
-  //   }, [onSubmitRequest]);
-
-  //   useEffect(() => {
-  //     if (MoviesResponse) console.log(MoviesResponse);
-  //   }, [MoviesResponse]);
+  const [movies, setMovies] = useState<MovieListProps[]>([]);
 
   const page = 1;
 
   const params = useLocation();
   const type = params?.pathname.split("/")[2] ?? "now_playing";
-  console.log({ type });
 
-  const getMivies = useCallback(async () => {
-    await axios
-      .get(
-        `${process.env.REACT_APP_TMDB_API_URL}/movie/${type}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=${page}`
-      )
-      .then((res) => setMiovies(res?.data?.results));
-  }, [type, page]);
-
-  console.log(movies);
+  const { data } = useFetch(`movie/${type}`, page);
 
   useEffect(() => {
-    getMivies();
-  }, [getMivies]);
+    if (data) {
+      setMovies(data);
+    }
+  }, [data]);
 
   return (
     <main>
@@ -60,10 +41,10 @@ const MovieList = () => {
           {movies?.map((movie) => (
             <MovieCard
               key={movie?.id}
-              id={movie.id}
-              title={movie.title}
-              description={movie.overview}
-              image={movie.poster_path}
+              id={movie?.id}
+              title={movie?.title}
+              description={movie?.overview}
+              image={movie?.poster_path}
             />
           ))}
         </div>
