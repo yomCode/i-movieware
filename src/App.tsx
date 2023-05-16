@@ -5,7 +5,7 @@ import { AllRoutes } from "./routes/AllRoutes";
 
 const app = () => {
   return (
-    <div className="app">
+    <div className="dark:bg-gray-800">
       <Header />
       <AllRoutes />
       <Footer />

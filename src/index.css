@@ -11,14 +11,16 @@
 }
 
 body {
-  /* font-family: "popins", sans-serif; */
   font-family: poppins, sans-serif;
   background-color: #f7fafc;
-  /* padding: 0 1rem; */
 }
 
-.navLink.active {
-  border-bottom: 2px solid #000000;
+.darkNavLink.active {
+  border-bottom: 2px solid white;
+}
+
+.lightNavLink.active {
+  border-bottom: 2px solid black;
 }
 
 .app {

@@ -30,14 +30,16 @@ export const MovieCard = ({
   return (
     <div
       onClick={handleMovieClick}
-      className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md  m-3 hover:cursor:pointer"
+      className="max-w-sm dark:text-white bg-white dark:bg-[#374151] rounded-lg border border-gray-200 shadow-md  m-3 hover:cursor:pointer"
     >
       <div>
-        <img className="rounded-lg" src={imageUrl} alt="Movie poster" />
+        <img className="rounded-t-lg" src={imageUrl} alt="Movie poster" />
       </div>
       <div className="p-5">
         <h1 className="text-3xl font-bold">{title}</h1>
-        <p className="font-normal text-gray-700 mt-4">{movieDescription}</p>
+        <p className="font-normal dark:text-[white] text-gray-700 mt-4">
+          {movieDescription}
+        </p>
       </div>
     </div>
   );
