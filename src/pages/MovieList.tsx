@@ -1,14 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { MovieCard } from "../components/MovieCard";
-import useAsync from "../api/useAsync";
-import getMovies, {
-  GetMovies,
-  MovieResponse,
-} from "../api/TMDBAPIs/fetchMovie";
-import { MoviesRequestResponse } from "../api/TMDBAPIs/fetchMovie";
-// import Pic from ;
+// import useAsync from "../api/useAsync";
+// import getMovies, {
+//   GetMovies,
+//   MovieResponse,
+// } from "../api/TMDBAPIs/fetchMovie";
+// import { MoviesRequestResponse } from "../api/TMDBAPIs/fetchMovie";
 import { useFetch } from "../hooks/useFetch";
 
 export interface MovieListProps {
@@ -34,9 +32,18 @@ const MovieList = () => {
     }
   }, [data]);
 
+  const title =
+    type === "now_playing"
+      ? "Now Playing"
+      : type === "top_rated"
+      ? "Top Rated"
+      : type === "popular"
+      ? "Popular"
+      : "Upcoming";
+
   useEffect(() => {
-    document.title = "Movie - List";
-  });
+    document.title = `${title} - Movies`;
+  }, [title]);
 
   return (
     <main>

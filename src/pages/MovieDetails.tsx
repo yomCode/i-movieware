@@ -105,7 +105,7 @@ const MovieDetails = () => {
           <p className="my-4">
             <span className="mr-2 font-bold">Trialer:</span>
             <a
-              href="#"
+              href={`https://www.imdb.com/title/${useMovie?.imdb_id}`}
               className="inline-flex items-center text-blue-800 underline dark:text-[#a9a9a9]"
             >
               Watch trailer on imdb
@@ -113,7 +113,6 @@ const MovieDetails = () => {
                 className="w-5 h-5 ml-2"
                 fill="currentColor"
                 viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
                 <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>

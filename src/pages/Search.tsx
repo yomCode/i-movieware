@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { MovieListProps } from "./MovieList";
 import { useFetch } from "../hooks/useFetch";
 import { MovieCard } from "../components/MovieCard";
@@ -19,7 +19,7 @@ const Search = () => {
   }, [data, searchQuery]);
 
   useEffect(() => {
-    document.title = "Search - Movie";
+    document.title = `Search results for - ${searchQuery}`;
   });
 
   return (
