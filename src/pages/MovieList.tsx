@@ -37,7 +37,7 @@ const MovieList = () => {
   return (
     <main>
       <section className="min-h-[87vh] max-w-7xl m-auto py-7">
-        <div className="flex justify-evenly flex-wrap hover:cursor-pointer">
+        <div className="flex xl:justify-start justify-evenly flex-wrap hover:cursor-pointer">
           {movies?.map((movie) => (
             <MovieCard
               key={movie?.id}
