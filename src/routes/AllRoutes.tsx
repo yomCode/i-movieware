@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
+import { TailSpin } from "react-loader-spinner";
 
 const MovieList = lazy(() => import("../pages/MovieList"));
 const MovieDetails = lazy(() => import("../pages/MovieDetails"));
@@ -8,7 +9,7 @@ const Search = lazy(() => import("../pages/Search"));
 
 export const AllRoutes = () => {
   return (
-    <Suspense fallback="">
+    <Suspense fallback={<TailSpin />}>
       <Routes>
         <Route path="/" element={<MovieList />} />
         <Route path="/movie/:id" element={<MovieDetails />} />

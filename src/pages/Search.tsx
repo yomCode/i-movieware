@@ -4,7 +4,7 @@ import { MovieListProps } from "./MovieList";
 import { useFetch } from "../hooks/useFetch";
 import { MovieCard } from "../components/MovieCard";
 const Search = () => {
-  const [movies, setMovies] = useState<MovieListProps[]>([]);
+  const [movies, setMovies] = useState<MovieListProps[] | null>([]);
 
   const [searchParams] = useSearchParams();
 
@@ -20,8 +20,13 @@ const Search = () => {
 
   return (
     <main>
-      <section className=" max-w-7xl m-auto py-7">
-        <div className="flex justify-start flex-wrap">
+      <section className="min-h-[87vh] max-w-7xl m-auto py-7">
+        <p className="text-3xl text-gray-700 dark:text-white">
+          {movies && movies?.length > 0
+            ? `Results for '${searchQuery}'`
+            : `No Result found for '${searchQuery}'`}{" "}
+        </p>
+        <div className="flex justify-evenly flex-wrap mt-[2rem]">
           {movies?.map((movie) => (
             <MovieCard
               key={movie?.id}

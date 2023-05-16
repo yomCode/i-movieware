@@ -29,14 +29,7 @@ const Header = () => {
     },
   ];
 
-  const [searchValue, setSearchValue] = React.useState("");
-
   const navigate = useNavigate();
-
-  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   e.preventDefault();
-  //   setSearchValue(e.target.search.value);
-  // };
 
   const handleSearchMovie = (e: React.FormEvent<SubmitSearchQuery>) => {
     e.preventDefault();
@@ -44,14 +37,15 @@ const Header = () => {
       e.currentTarget.elements.namedItem("search") as HTMLInputElement
     ).value;
     console.log({ query });
+    e.currentTarget.reset();
     return navigate(`/search?q=${query}`);
   };
 
   return (
     <header>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <Link to="https://flowbite.com/" className="flex items-center">
+        <div className="max-w-[1600px] flex flex-wrap items-center justify-between mx-auto p-4">
+          <Link to="/" className="flex items-center">
             {/* <img src={Logo} className="h-8 mr-3" alt="Flowbite Logo" /> */}
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               i-Movieware
