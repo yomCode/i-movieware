@@ -34,6 +34,10 @@ const MovieList = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    document.title = "Movie - List";
+  });
+
   return (
     <main>
       <section className="min-h-[87vh] max-w-7xl m-auto py-7">

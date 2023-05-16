@@ -44,6 +44,10 @@ const MovieDetails = () => {
 
   console.log({ imageUrl });
 
+  useEffect(() => {
+    document.title = "Movie - Information";
+  });
+
   return (
     <main className="min-h-[87vh] max-w-7xl mx-auto p-3">
       <section className="flex justify-around flex-wrap py-5">

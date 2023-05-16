@@ -18,6 +18,10 @@ const Search = () => {
     }
   }, [data, searchQuery]);
 
+  useEffect(() => {
+    document.title = "Search - Movie";
+  });
+
   return (
     <main>
       <section className="min-h-[87vh] max-w-7xl m-auto py-7">
