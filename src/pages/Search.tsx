@@ -31,15 +31,17 @@ const Search = () => {
             : `No Result found for '${searchQuery}'`}{" "}
         </p>
         <div className="flex justify-evenly flex-wrap mt-[2rem]">
-          {movies?.map((movie) => (
-            <MovieCard
-              key={movie?.id}
-              id={movie?.id}
-              title={movie?.title}
-              description={movie?.overview}
-              image={movie?.poster_path}
-            />
-          ))}
+          {movies
+            ?.filter((movie) => movie?.poster_path)
+            ?.map((movie) => (
+              <MovieCard
+                key={movie?.id}
+                id={movie?.id}
+                title={movie?.title}
+                description={movie?.overview}
+                image={movie?.poster_path}
+              />
+            ))}
         </div>
       </section>
     </main>
