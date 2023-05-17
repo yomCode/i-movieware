@@ -9,7 +9,13 @@ const Search = lazy(() => import("../pages/Search"));
 
 export const AllRoutes = () => {
   return (
-    <Suspense fallback={<TailSpin />}>
+    <Suspense
+      fallback={
+        <div className="flex justify-center items-center h-screen">
+          <TailSpin color="#00BFFF" height={80} width={80} />
+        </div>
+      }
+    >
       <Routes>
         <Route path="/" element={<MovieList />} />
         <Route path="/movie/:id" element={<MovieDetails />} />

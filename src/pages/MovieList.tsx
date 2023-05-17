@@ -47,17 +47,19 @@ const MovieList = () => {
 
   return (
     <main>
-      <section className="min-h-[87vh] max-w-7xl m-auto py-7">
-        <div className="flex xl:justify-start justify-evenly flex-wrap hover:cursor-pointer">
-          {movies?.map((movie) => (
-            <MovieCard
-              key={movie?.id}
-              id={movie?.id}
-              title={movie?.title}
-              description={movie?.overview}
-              image={movie?.poster_path}
-            />
-          ))}
+      <section className="max-w-7xl m-auto py-7">
+        <div className="flex lg:justify-start justify-evenly flex-wrap hover:cursor-pointer">
+          {movies
+            ?.filter((movie) => movie?.poster_path)
+            ?.map((movie) => (
+              <MovieCard
+                key={movie?.id}
+                id={movie?.id}
+                title={movie?.title}
+                description={movie?.overview}
+                image={movie?.poster_path}
+              />
+            ))}
         </div>
       </section>
     </main>

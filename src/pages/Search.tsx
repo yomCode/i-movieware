@@ -24,7 +24,7 @@ const Search = () => {
 
   return (
     <main>
-      <section className="min-h-[87vh] max-w-7xl m-auto py-7">
+      <section className="max-w-7xl m-auto py-7">
         <p className="text-3xl text-gray-700 dark:text-white">
           {movies && movies?.length > 0
             ? `Results for '${searchQuery}'`

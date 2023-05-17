@@ -9,7 +9,7 @@ const PageNotFound = () => {
 
   return (
     <main>
-      <section className="min-h-[88vh] flex flex-col justify-center px-2">
+      <section className="flex flex-col justify-center px-2">
         <div className="flex flex-col items-center my-4">
           <p className="dark:text-white text-7xl font-bold">Oops!</p>
           <img src={PageNotFoundImg} alt="" />

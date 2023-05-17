@@ -49,7 +49,7 @@ const MovieDetails = () => {
   });
 
   return (
-    <main className="min-h-[87vh] max-w-7xl mx-auto p-3">
+    <main className="max-w-7xl mx-auto p-3">
       <section className="flex justify-around flex-wrap py-5">
         <div className="max-w-sm">
           <img className="rounded" src={imageUrl} alt="" />
